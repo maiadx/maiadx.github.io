@@ -26,12 +26,11 @@
     text-decoration: underline;
 }
 
-/* Enhanced GitHub Link */
 .github-link {
     display: inline-flex;
     align-items: center;
     background-color: #5f3892;
-    color: #fff;
+    color: #fff !important; /* Force color to stay white */
     text-decoration: none;
     font-weight: bold;
     padding: 10px 15px;
@@ -42,14 +41,7 @@
 
 .github-link:hover {
     background-color: #4a2e7c;
-    color: #fff;
-
-}
-
-.github-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
+    color: #fff !important; /* Ensure color remains white on hover */
 }
 .hyperparameters {
     list-style-type: disc;

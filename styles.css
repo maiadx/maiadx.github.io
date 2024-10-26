@@ -12,7 +12,30 @@
     font-weight: normal;
     font-style: normal;
 }
+.email-link, .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #5f3892;
+    color: #fff !important; /* Ensure color is always white */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
 
+.email-link:hover, .linkedin-link:hover {
+    background-color: #4a2e7c;
+    color: #fff !important;
+}
+
+/* LinkedIn Icon Styling */
+.linkedin-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
 body {
     background-image: url("res/image.jpg");
     font-family: 'nec-test', sans-serif;
@@ -93,15 +116,91 @@ header {
     font-size: 1.1em;
     margin-top: 10px;
 }
+/* Root Variables for Easy Theme Management */
+:root {
+    --primary-color: #5f3892;
+    --hover-color: #4a2e7c;
+    --text-color: #ffffff;
+    --font-size: 16px;
+    --padding: 10px 15px;
+    --border-radius: 5px;
+    --margin-top: 10px;
+    --margin-right: 10px;
+    --icon-size: 24px;
+    --transition-speed: 0.2s;
+}
 
-/* Links */
-.github-link {
+/* General Styles for Social Links */
+.social-link {
     display: inline-flex;
     align-items: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
-    color: #333;
     font-weight: bold;
-    margin-top: 5px;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    margin-top: var(--margin-top);
+    margin-right: var(--margin-right);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    font-size: var(--font-size);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-link:last-child {
+    margin-right: 0; /* Remove margin from the last link */
+}
+
+/* Icon Styles */
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-right: 8px;
+}
+
+/* Hover Effects */
+.social-link:hover {
+    background-color: var(--hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus State for Accessibility */
+.social-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(95, 56, 146, 0.5);
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 600px) {
+    .social-link {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+}
+github-link, .email-link, .linkedin-link 
+{
+    display: inline-flex;
+    align-items: center;
+    background-color: #5f3892;
+    color: #fff !important; /* Ensure color is always white */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+.github-icon, .linkedin-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.github-link:hover, .email-link:hover, .linkedin-link:hover {
+    background-color: #4a2e7c;
+    color: #fff !important;
 }
 
 .github-icon {
