@@ -1,12 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+code, pre {
+    font-family: 'Cascadia Code', monospace;
+}
 .code-block {
-    background-color: #f6f8fa;
+    background-color: #111111;
     padding: 15px;
     opacity: 100%;
     border-radius: 5px;
-    border: 1px solid #dfe2e5;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95em;
-    color: #333;
+    border: 1px solid #683f9e;
+    font-family: 'Cascadia Code', monospace;
+    font-size: 1em;
+    color: var(--text-color);
     overflow-x: auto;
     white-space: pre;
 }
@@ -15,21 +19,21 @@
     display: inline-block;
     margin-bottom: px;
     font-size: 1.1em;
-    color: #5f3892;
+    color: #996dd3;
     text-decoration: none;
     font-weight: bold;
     padding: 0px 0;
 }
 
 .back-arrow:hover {
-    color: #333;
+    color: #ad86e0;
     text-decoration: underline;
 }
 
 .github-link {
     display: inline-flex;
     align-items: center;
-    background-color: #5f3892;
+    background-color: #683f9e;
     color: #fff !important; /* Force color to stay white */
     text-decoration: none;
     font-weight: bold;
@@ -47,7 +51,7 @@
     list-style-type: disc;
     padding-left: 20px;
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-color);
 }
 
 ul.hyperparameters li {
@@ -60,44 +64,117 @@ ul.hyperparameters li {
     font-weight: normal;
     font-style: normal;
 }
+/* General Styling */
+:root {
+    --text-color: rgb(240, 240, 240); /* set a value "red" to the "color" variable */
+    --bg-color:rgb(0,0,0); 
+}
+  
+@font-face {
+    font-family: 'nec-test';
+    src: url('resources/fonts/CyberpunkWaifus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* General Styling */
+@font-face {
+    font-family: 'nec-test';
+    src: url('resources/fonts/CyberpunkWaifus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.section-divider {
+    color: #5f3892;
+    margin-bottom: 20px;
 
+}
+.email-link, .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #5f3892;
+    color: --text-color !important; /* Ensure color is always white */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.email-link:hover, .linkedin-link:hover {
+    background-color: #4a2e7c;
+    color: --text-color  !important;
+}
+
+/* LinkedIn Icon Styling */
+.linkedin-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
 body {
-    background-image: url("../res/image.jpg");
+    background-color: #6a819e;
+    min-height: 100vh; /* Ensures the body height is at least the viewport height */
+    aspect-ratio: 16 / 9; 
     font-family: 'nec-test', sans-serif;
-    background-color: #e6e6e6;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     font-size: 1.1em;
-    color: #222;
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: --text-color ;
+    background-color: --bg-color;
+
+}
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../res/image.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeIn 0.25s ease-in-out forwards; /* Adjust timing as needed */
+    z-index: -1; /* Ensure it's behind the content */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 /* Container */
 .content-pane {
-    width: 90%;
-    opacity: 95%;
-    background-color: #e6e6e6;
-    max-width: 800px;
+    width: 95%;
+    opacity: 97%;
+    background-color: var(--container-bg-color);
+    max-width: 1800px;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-color);
     border-radius: 8px;
+    background-color: #070707;
 }
 
 /* Header */
 header {
     text-align: center;
     padding-bottom: 10px;
-    border-bottom: 2px solid #5f3892;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .site-title {
     font-size: 2.5em;
-    color: #333;
+    color: var(--header-text-color);
     margin: 10px 0;
 }
 
@@ -115,17 +192,18 @@ header {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
+    max-width: 100%;
 }
-/* Profile Section Enhancements */
+
 .profile-name {
-    font-size: 1.8em; /* Larger than body text but smaller than the site title */
-    color: #333;
-    margin: 0; /* Remove extra margins */
+    font-size: 1.8em;
+    color: var(--text-color);
+    margin: 0;
 }
 
 .pronouns {
-    display: block; /* Ensures it appears on its own line */
-    color: #777;
+    display: block;
+    color: #9c9c9c;
     font-style: italic;
     margin-top: 1px;
 }
@@ -133,23 +211,98 @@ header {
 .about-me {
     margin-top: 5px;
     font-size: 1.1em;
-    color: #222;
+    color: var(--text-color);
 }
-
 
 .profile-blurb {
     font-size: 1.1em;
     margin-top: 10px;
 }
+/* Root Variables for Easy Theme Management */
+:root {
+    --primary-color: #5f3892;
+    --hover-color: #4a2e7c;
+    --text-color: #ffffff;
+    --font-size: 16px;
+    --padding: 10px 15px;
+    --border-radius: 5px;
+    --margin-top: 10px;
+    --margin-right: 10px;
+    --icon-size: 24px;
+    --transition-speed: 0.2s;
+}
 
-/* Links */
-.github-link {
+/* General Styles for Social Links */
+.social-link {
     display: inline-flex;
     align-items: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
-    color: #333;
     font-weight: bold;
-    margin-top: 5px;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    margin-top: var(--margin-top);
+    margin-right: var(--margin-right);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    font-size: var(--font-size);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-link:last-child {
+    margin-right: 0; /* Remove margin from the last link */
+}
+
+/* Icon Styles */
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-right: 8px;
+}
+
+/* Hover Effects */
+.social-link:hover {
+    background-color: var(--hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus State for Accessibility */
+.social-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(95, 56, 146, 0.5);
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 600px) {
+    .social-link {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+}
+github-link, .email-link, .linkedin-link 
+{
+    display: inline-flex;
+    align-items: center;
+    background-color: #5f3892;
+    color: #fff !important; /* Ensure color is always white */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+.github-icon, .linkedin-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.github-link:hover, .email-link:hover, .linkedin-link:hover {
+    background-color: #4a2e7c;
+    color: #fff !important;
 }
 
 .github-icon {
@@ -157,7 +310,6 @@ header {
     height: 20px;
     margin-right: 8px;
 }
-
 
 /* Articles */
 .article-container {
@@ -168,25 +320,26 @@ header {
 
 .article-box {
     padding: 15px;
-    background-color: #e6e6e6;
+    background-color: #0f0f0f;
     border: 1px solid #5f3892;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .article-box:hover {
     transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .article-content h2 {
     margin: 0 0 5px;
     font-size: 1.4em;
-    color: #333;
+    color: var(--text-color);
 }
 
 .article-content p {
-    color: #555;
+    color: var(--text-color);
 }
 
 .date {
@@ -200,10 +353,6 @@ footer {
     text-align: center;
     padding: 10px;
     border-top: 2px solid #5f3892;
-    color: #666;
+    color: #868686;
     margin-top: 20px;
-}
-.article-box:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
