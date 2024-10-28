@@ -1,22 +1,10 @@
 /* General Styling */
 :root {
     --text-color: rgb(240, 240, 240); /* set a value "red" to the "color" variable */
-    --bg-color:rgb(0,0,0); 
+    --bg-color:rgb(17, 17, 17); 
 }
   
-@font-face {
-    font-family: 'nec-test';
-    src: url('resources/fonts/CyberpunkWaifus.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-/* General Styling */
-@font-face {
-    font-family: 'nec-test';
-    src: url('resources/fonts/CyberpunkWaifus.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 .background-image {
     position: fixed;
     top: 0;
@@ -93,7 +81,7 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px var(--shadow-color);
     border-radius: 8px;
-    background-color: #070707;
+    background-color: #0a0a0a;
 }
 
 /* Header */

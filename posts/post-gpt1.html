@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <link rel="preload" href="../res/image.jpg" as="image">
     <meta charset="UTF-8">
@@ -5,49 +7,49 @@
     <title>Maia Doxtader</title>
     <link rel="stylesheet" href="style-post.css">
 </head>
-<div class="background-image"></div> <!-- Background image div -->
+<body>
+    <div class="background-image"></div> <!-- Background image div -->
 
-<link rel="stylesheet" href="style-post.css">
-<div class="content-pane">
-
-    <a href="../index.html" class="back-arrow">
-        ← Back
-    </a>
-
-    <section>
-        <h2>Building a GPT Model</h2>
-        
-        <a href="https://github.com/maiadx/AI_Learning/tree/main/gpt1" target="_blank" class="github-link">
-            <img src="../res/github.png" alt="GitHub Profile" class="github-icon"> View Project on GitHub
+    <div class="content-pane">
+        <a href="../index.html" class="back-arrow">
+            ← Back
         </a>
-        <p>Started with n-gram model for simplicity, then moved to transformers to get significantly better quality output.</p>
-    </section>
 
-    <section>
-        <h4>Important Hyperparameters</h4>
-        <ul class="hyperparameters">
-            <li><strong>Batch size:</strong> Number of independent text sequences processed concurrently.</li>
-            <li><strong>Block size:</strong> Maximum context length for predictions.</li>
-            <li><strong>Max iters:</strong> Number of training iterations.</li>
-            <li><strong>Learning rate:</strong> Self-explanatory.</li>
-            <li><strong>Embedding dimension:</strong> 384-dimensional table for 32-dimensional embeddings.</li>
-        </ul>
-    </section>
+        <section>
+            <h2>Building a GPT Model</h2>
 
-    <section>
-        <h4>Encoder and Decoder</h4>
-        <p><strong>Encoder:</strong> Creates a dictionary to map each token to an integer value for model learning.</p>
-        <p><strong>Decoder:</strong> Maps integer values back to text tokens.</p>
-    </section>
+            <a href="https://github.com/maiadx/AI_Learning/tree/main/gpt1" target="_blank" class="github-link">
+                <img src="../res/github.png" alt="GitHub Profile" class="github-icon"> View Project on GitHub
+            </a>
+            <p>Started with n-gram model for simplicity, then moved to transformers to get significantly better quality output.</p>
+        </section>
 
-    <section>
-        <h4>Attention Head</h4>
-        <p><em>Attention</em> is the core component of GPT-1, providing model interpretability and sequence understanding.</p>
-    </section>
+        <section>
+            <h4>Important Hyperparameters</h4>
+            <ul class="hyperparameters">
+                <li><strong>Batch size:</strong> Number of independent text sequences processed concurrently.</li>
+                <li><strong>Block size:</strong> Maximum context length for predictions.</li>
+                <li><strong>Max iters:</strong> Number of training iterations.</li>
+                <li><strong>Learning rate:</strong> Self-explanatory.</li>
+                <li><strong>Embedding dimension:</strong> 384-dimensional table for 32-dimensional embeddings.</li>
+            </ul>
+        </section>
 
-    <details>
-        <summary>The Code</summary>
-        <pre class="code-block"><code>
+        <section>
+            <h4>Encoder and Decoder</h4>
+            <p><strong>Encoder:</strong> Creates a dictionary to map each token to an integer value for model learning.</p>
+            <p><strong>Decoder:</strong> Maps integer values back to text tokens.</p>
+        </section>
+
+        <section>
+            <h4>Attention Head</h4>
+            <p><em>Attention</em> is the core component of GPT-1, providing model interpretability and sequence understanding.</p>
+        </section>
+
+        <details>
+            <summary>The Code</summary>
+
+            <pre><code class="language-python">
 class AttentionHead(nn.Module):
     def __init__(self, head_size):
         self.key = nn.Linear(n_embed_dim, head_size, bias=False)
@@ -57,9 +59,9 @@ class AttentionHead(nn.Module):
     def forward(self, x):
         weights = softmax(query @ key.T)  # Apply softmax activation
         return weights @ value  # Aggregate values
-        </code></pre>
+            </code></pre>
 
-        <pre class="code-block"><code>
+            <pre><code class="language-python">
 class MultiHeadAttention(nn.Module):
     def __init__(self, num_heads, head_size):
         self.heads = nn.ModuleList([AttentionHead(head_size) for _ in range(num_heads)])
@@ -69,9 +71,9 @@ class MultiHeadAttention(nn.Module):
     def forward(self, x):
         out = torch.cat([h(x) for h in self.heads], dim=-1)
         return self.dropout(self.proj(out))
-        </code></pre>
+            </code></pre>
 
-        <pre class="code-block"><code>
+            <pre><code class="language-python">
 class FeedForwardNN(nn.Module):
     def __init__(self, n_embed_dim):
         self.net = nn.Sequential(
@@ -83,9 +85,9 @@ class FeedForwardNN(nn.Module):
 
     def forward(self, x):
         return self.net(x)
-        </code></pre>
+            </code></pre>
 
-        <pre class="code-block"><code>
+            <pre><code class="language-python">
 class GPTLanguageModel(nn.Module):
     def __init__(self, vocab_size, n_embed_dim, n_layer):
         token_embedding_table = Embedding(vocab_size, n_embed_dim)
@@ -100,13 +102,19 @@ class GPTLanguageModel(nn.Module):
         pos_emb = self.position_embedding_table(torch.arange(T, device=device))  # (T,C)
         x = self.blocks(tok_emb + pos_emb)
         return self.lm_head(self.ln_f(x))  # (B,T,vocab_size)
-        </code></pre>
-    </details>
-    
-    <br /> <i>...notes here are not complete. Working on transferring all my notes and projects here!</i>
-    
-    <footer>
-        <p>Last updated: October 26, 2024</p>
-    </footer>
+            </code></pre>
+        </details>
 
-</div>
+        <br /><i>...notes here are not complete. Working on transferring all my notes and projects here!</i>
+
+        <footer>
+            <p>Last updated: October 26, 2024</p>
+        </footer>
+    </div>
+
+    <!-- Prism.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

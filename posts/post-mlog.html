@@ -1,0 +1,92 @@
+<head></head>
+    <link rel="preload" href="../res/image.jpg" as="image">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maia Doxtader</title>
+    <link rel="stylesheet" href="../style-posts.css">
+</head>
+<div class="background-image"></div> <!-- Background image div -->
+
+<link rel="stylesheet" href="style-post.css">
+<div class="content-pane">
+
+    <a href="https://maiadx.github.io" class="back-arrow">
+        ← Back
+    </a>
+
+    <section>
+        <h2>Writing a Rust Logger in a Weekend</h2>
+        
+        <a href="https:github.com/maiadx/mlog/" target="_blank" class="gitHub-link">
+            <img src="../res/github.png" alt="GitHub Repo" class="gitHub-icon"> View Project on GitHub
+        </a>
+    <!-- Main Heading -->
+
+    <!-- Features Section -->
+    <h2 id="features">Features</h2>
+    <ul>
+        <li>Supports varying log levels</li>
+        <li>Colorized output</li>
+        <li>Optional file logging</li>
+        <li>Async mode</li>
+        <li>Multithreaded mode</li>
+        <li>Implements <code>std::panic_hook</code> to save crash information according to your configuration</li>
+    </ul>
+
+    <!-- Log Level Colors Section -->
+    <h2 id="log-level-colors">Log Level Colors</h2>
+    <p>
+        <img src="https://github.com/maiadx/mlog/-/raw/main/tests/test-example.png" alt="Example of log level colors">
+    </p>
+
+    <!-- Usage Section -->
+<!-- Usage Section -->
+<h2 id="usage">Usage</h2>
+<pre><code class="language-rust">
+info!("This is an info message.");
+warn!("This is a warning.");
+error!("This is an error: {}", 2);
+crit!("Critical error, uh oh.");
+success!("Operation successful! :)");
+</code></pre>
+
+
+    <!-- Initialization Section -->
+    <h2 id="initialization">Initialization</h2>
+    <p>
+        You can initialize the logger with any log level; lower-priority logs will be automatically suppressed.<br>
+        Priorities: <strong>Info</strong> (lowest) &rarr; <strong>Success</strong> &rarr; <strong>Warn</strong> &rarr; <strong>Error</strong> &rarr; <strong>Crit</strong> (highest priority)
+    </p>
+    <pre><code class="language-rust">
+mlog::init(log_config);
+// ...
+mlog::shutdown(); // Safely shutdown the logger before exiting.
+    </code></pre>
+
+    <!-- Configuration Section -->
+    <h2 id="configuration">Configuration</h2>
+    <pre><code class="language-rust">
+let log_config = LogConfig {
+    log_level: LogLevel::Info,                     // Defaults to logging everything
+    application_name: "example application".to_string(),
+    log_filepath: Some("logs/example"),            // Filepath for logs (default: None)
+    console_flag: true,                            // Toggle console logging
+    async_flag: true,                              // Async logger (defaults to false)
+    multi_threaded_flag: true,                     // Single-threaded by default
+    time_format: "%Y-%m-%d %H:%M:%S%.3f".to_string(), // Customizable time format
+};
+    </code></pre>
+    <p>
+        Additionally, if you build with the `performance` feature flag, all logs that are not errors or critical errors are removed at compile time (for release builds only).
+    </p>
+
+    <!-- Footer -->
+    <footer>
+        <p>Last updated: September 13, 2024</p>
+    </footer>
+     <!-- Prism.js Scripts -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+
+</body>
+</html>
